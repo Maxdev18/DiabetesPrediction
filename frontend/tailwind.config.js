@@ -6,7 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        
+        "mainBG": "#001C30",
+        "btnBG": "#008080",
+        "progressBarBG": "#0096FF"
       }
     },
   },
