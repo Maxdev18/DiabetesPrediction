@@ -25,6 +25,7 @@
   },
   "include": [
     "src",
-    "**/*.cy.[ts,tsx]"
+    "**/*.cy.[ts,tsx]",
+    "react-app-env.d.ts"
   ]
 }
