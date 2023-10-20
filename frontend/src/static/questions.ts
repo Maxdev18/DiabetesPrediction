@@ -3,122 +3,114 @@ import { IQuestions } from "../Interfaces/IQuestions";
 export const questions: Array<IQuestions> = [
   {
     id: 1,
-    questionNumber: 1,
     question: "What is your age?",
     inputType: "text",
     selections: [""],
-    numberOfInputs: 1
+    input: ""
   },
   {
     id: 2,
-    questionNumber: 2,
-    question: "What is your height and weight? (In ft and lbs)",
-    inputType: "number",
-    numberOfInputs: 2,
-    selections: ["Height", "Weight"]
+    question: "What is your height(ft)?",
+    inputType: "text",
+    selections: [""],
+    input: ""
   },
   {
     id: 3,
-    questionNumber: 3,
-    question: "Have you smoked at least 100 cigarettes in your entire life?",
-    inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Yes", "No"]
+    question: "What is your weight(lbs)?",
+    inputType: "text",
+    selections: [""],
+    input: ""
   },
   {
     id: 4,
-    questionNumber: 4,
-    question: "Did you ever have a stroke?",
+    question: "Have you smoked at least 100 cigarettes in your entire life?",
     inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Yes", "No"]
+    selections: ["Yes", "No"],
+    input: ""
   },
   {
     id: 5,
-    questionNumber: 5,
-    question: "What was your blood pressure?",
-    inputType: "number",
-    numberOfInputs: 2,
-    selections: ["Systolic pressure", "Diastolic pressure"]
+    question: "Did you ever have a stroke?",
+    inputType: "radio",
+    selections: ["Yes", "No"],
+    input: ""
   },
   {
     id: 6,
-    questionNumber: 6,
-    question: "What is your cholesterol level? (In mg/dL)",
-    inputType: "number",
-    numberOfInputs: 1,
-    selections: ["Cholesterol level"]
+    question: "What was your Systolic pressure?",
+    inputType: "text",
+    selections: [""],
+    input: ""
   },
   {
     id: 7,
-    questionNumber: 7,
-    question: "Do you have any known severe heart disease, or did you have any heart attack?",
-    inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Yes", "No"]
+    question: "What was your Diastolic pressure?",
+    inputType: "text",
+    selections: [""],
+    input: ""
   },
   {
     id: 8,
-    questionNumber: 8,
-    question: "During the past month, other than your regular job, did you participate in any physical activities or exercises such as running, calisthenics, golf, gardening, or walking for exercise?",
-    inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Yes", "No"]
+    question: "What is your cholesterol level? (In mg/dL)",
+    inputType: "text",
+    selections: ["Cholesterol level"],
+    input: ""
   },
   {
     id: 9,
-    questionNumber: 9,
-    question: "Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?",
+    question: "Do you have any known severe heart disease, or did you have any heart attack?",
     inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Yes", "No"]
+    selections: ["Yes", "No"],
+    input: ""
   },
   {
     id: 10,
-    questionNumber: 10,
-    question: "How would you say that your health is in general on a scale of 1-5?",
+    question: "During the past month, other than your regular job, did you participate in any physical activities or exercises such as running, calisthenics, golf, gardening, or walking for exercise?",
     inputType: "radio",
-    numberOfInputs: 5,
-    selections: ["1 Excellent", "2 Very Good", "3 Good", "4 Fair", "5 Poor"]
+    selections: ["Yes", "No"],
+    input: ""
   },
   {
     id: 11,
-    questionNumber: 11,
-    question: "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good?",
+    question: "Was there a time in the past 12 months when you needed to see a doctor but could not because of cost?",
     inputType: "radio",
-    numberOfInputs: 1,
-    selections: ["Number of days"]
+    selections: ["Yes", "No"],
+    input: ""
   },
   {
     id: 12,
-    questionNumber: 12,
-    question: "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good?",
+    question: "How would you say that your health is in general on a scale of 1-5?",
     inputType: "radio",
-    numberOfInputs: 1,
-    selections: ["Number of days"]
+    selections: ["1 Excellent", "2 Very Good", "3 Good", "4 Fair", "5 Poor"],
+    input: ""
   },
   {
     id: 13,
-    questionNumber: 13,
-    question: "Do you have serious difficulty walking or climbing stairs?",
-    inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Yes", "No"]
+    question: "Now thinking about your mental health, which includes stress, depression, and problems with emotions, for how many days during the past 30 days was your mental health not good?",
+    inputType: "text",
+    selections: ["Number of days"],
+    input: ""
   },
   {
     id: 14,
-    questionNumber: 14,
-    question: "What is your biological sex?",
-    inputType: "radio",
-    numberOfInputs: 2,
-    selections: ["Male", "Female"]
+    question: "Now thinking about your physical health, which includes physical illness and injury, for how many days during the past 30 days was your physical health not good?",
+    inputType: "text",
+    selections: ["Number of days"],
+    input: ""
   },
   {
     id: 15,
-    questionNumber: 15,
-    question: "",
+    question: "Do you have serious difficulty walking or climbing stairs?",
     inputType: "radio",
-    numberOfInputs: 1,
-    selections: [""]
+    selections: ["Yes", "No"],
+    input: ""
+  },
+  {
+    id: 16,
+    question: "What is your biological sex?",
+    inputType: "radio",
+    selections: ["Male", "Female"],
+    input: ""
   }
 ]
