@@ -1,5 +1,5 @@
 import json
-from flask import Flask, redirect, request
+from flask import Flask, redirect, request, jsonify
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -17,15 +17,18 @@ def get_users():
 
 @app.route("/get-result", methods=['POST'])
 @cross_origin()
-def getUsers():
-  res = request
-  print(res)
+def getResult():
+  res = request.get_json()
+
+  for question in res["questions"]:
+    for input in question["inputs"]:
+      print("Value " + str(res["questions"].index(question) + 1) + ": " + input)
 
   result = {
     "accuracy": "98%"
   }
 
-  return redirect("127.0.0.1:3000", code=200, json=result)
+  return jsonify(result)
 
 if __name__ == "__main__":
   app.run()
