@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IQuestions } from './Interfaces/IQuestions';
 import { questions } from './static/questions';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const widthPercentage = 1 / questions.length
 
@@ -34,6 +35,13 @@ export const Survey: React.FC = () => {
     newArray[index - 1].input = e.target.value;
 
     setSurveyQuestion([...newArray])
+  }
+
+  async function handleSubmit() {
+    const data = await axios.post("/get-result", {questions: surveyQuestion})
+      .then(response => {
+        console.log(response.data)
+      })
   }
 
   return (
@@ -81,9 +89,11 @@ export const Survey: React.FC = () => {
 
       <div className='absolute bottom-40 left-1/2 -translate-x-1/2'>
         <button className="bg-btnBG text-white w-40 py-3 mr-10 rounded-full" onClick={previous}>Previous</button>
-        <button className="bg-btnBG text-white w-40 py-3 ml-10 rounded-full" onClick={next}>
-          {index + 1 > questions.length ? "Submit" : "Next"}
-        </button>
+        {index + 1 > questions.length ? (
+          <button className="bg-btnBG text-white w-40 py-3 ml-10 rounded-full" onClick={handleSubmit}>Submit</button>
+        ) : (
+          <button className="bg-btnBG text-white w-40 py-3 ml-10 rounded-full" onClick={next}>Next</button>
+        )}
       </div>
     </div>
   );
