@@ -20,7 +20,7 @@ export const Survey: React.FC = () => {
   }
 
   function next() {
-    if(questions[index - 1].input === "") return setError(true);
+    if(questions[index - 1].inputs.filter(input => input === "").length > 0) return setError(true);
     setError(false);
     if(index < questions.length) return setIndex(index + 1)
     if(index + 1 > questions.length) navigate("/results")
@@ -30,10 +30,10 @@ export const Survey: React.FC = () => {
     if(index - 1 >= 1) setIndex(index - 1)
   }
 
-  function handleChange(e: any) {
+  function handleChange(e: any, i: number) {
     let newArray = [...surveyQuestion]
-    newArray[index - 1].input = e.target.value;
-
+    newArray[index - 1].inputs[i] = e.target.value;
+    console.log(newArray[index - 1].inputs[i])
     setSurveyQuestion([...newArray])
   }
 
@@ -66,16 +66,18 @@ export const Survey: React.FC = () => {
                       type="radio"
                       name={`question${questions[index - 1].id}`}
                       className="focus:outline-none"
-                      checked={questions[index - 1].input === selection}
-                      onChange={(e) => handleChange(e)}
+                      checked={questions[index - 1].inputs.filter(input => input === selection)[0] === selection}
+                      onChange={(e) => handleChange(e, 0)}
                       value={selection} />
                   ) : (
                     <input
                       type="text"
+                      key={i}
                       className=" text-black focus:outline-none px-4 py-2 rounded-lg"
-                      onChange={(e) => handleChange(e)}
-                      value={questions[index - 1].input}/>
-                  )}
+                      onChange={(e) => handleChange(e, i)}
+                      value={questions[index - 1].inputs[i]} />
+                  )
+                  }
               </div>
             )
           })}
