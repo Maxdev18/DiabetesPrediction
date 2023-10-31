@@ -3,5 +3,5 @@ export interface IQuestions {
   question: string;
   inputType: string;
   selections: Array<string>;
-  input: string
+  inputs: Array<string>
 }

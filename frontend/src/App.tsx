@@ -4,7 +4,7 @@ import { Landing } from './Landing';
 import { Survey } from './Survey';
 import { Results } from './Results';
 
-Axios.defaults.baseURL = "http://localhost:5000"
+Axios.defaults.baseURL = "http://127.0.0.1:5000"
 
 function App(): JSX.Element {
   return (

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { IQuestions } from './Interfaces/IQuestions';
 import { questions } from './static/questions';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const widthPercentage = 1 / questions.length
 
@@ -19,7 +20,7 @@ export const Survey: React.FC = () => {
   }
 
   function next() {
-    if(questions[index - 1].input === "") return setError(true);
+    if(questions[index - 1].inputs.filter(input => input === "").length > 0) return setError(true);
     setError(false);
     if(index < questions.length) return setIndex(index + 1)
     if(index + 1 > questions.length) navigate("/results")
@@ -29,11 +30,18 @@ export const Survey: React.FC = () => {
     if(index - 1 >= 1) setIndex(index - 1)
   }
 
-  function handleChange(e: any) {
+  function handleChange(e: any, i: number) {
     let newArray = [...surveyQuestion]
-    newArray[index - 1].input = e.target.value;
-
+    newArray[index - 1].inputs[i] = e.target.value;
+    console.log(newArray[index - 1].inputs[i])
     setSurveyQuestion([...newArray])
+  }
+
+  async function handleSubmit() {
+    const data = await axios.post("/get-result", {questions: surveyQuestion})
+      .then(response => {
+        console.log(response.data)
+      })
   }
 
   return (
@@ -58,16 +66,18 @@ export const Survey: React.FC = () => {
                       type="radio"
                       name={`question${questions[index - 1].id}`}
                       className="focus:outline-none"
-                      checked={questions[index - 1].input === selection}
-                      onChange={(e) => handleChange(e)}
+                      checked={questions[index - 1].inputs.filter(input => input === selection)[0] === selection}
+                      onChange={(e) => handleChange(e, 0)}
                       value={selection} />
                   ) : (
                     <input
                       type="text"
+                      key={i}
                       className=" text-black focus:outline-none px-4 py-2 rounded-lg"
-                      onChange={(e) => handleChange(e)}
-                      value={questions[index - 1].input}/>
-                  )}
+                      onChange={(e) => handleChange(e, i)}
+                      value={questions[index - 1].inputs[i]} />
+                  )
+                  }
               </div>
             )
           })}
@@ -81,9 +91,11 @@ export const Survey: React.FC = () => {
 
       <div className='absolute bottom-40 left-1/2 -translate-x-1/2'>
         <button className="bg-btnBG text-white w-40 py-3 mr-10 rounded-full" onClick={previous}>Previous</button>
-        <button className="bg-btnBG text-white w-40 py-3 ml-10 rounded-full" onClick={next}>
-          {index + 1 > questions.length ? "Submit" : "Next"}
-        </button>
+        {index + 1 > questions.length ? (
+          <button className="bg-btnBG text-white w-40 py-3 ml-10 rounded-full" onClick={handleSubmit}>Submit</button>
+        ) : (
+          <button className="bg-btnBG text-white w-40 py-3 ml-10 rounded-full" onClick={next}>Next</button>
+        )}
       </div>
     </div>
   );
