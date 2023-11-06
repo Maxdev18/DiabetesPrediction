@@ -1,6 +1,9 @@
-import json
+import pickle, numpy, json
 from flask import Flask, redirect, request, jsonify
 from flask_cors import CORS, cross_origin
+
+with open('backend\pickle_model.pkl', 'rb') as pickle_file:
+    randomForest = pickle.load(pickle_file)
 
 app = Flask(__name__)
 cors = CORS(app, origins=["http://localhost:3000"])
