@@ -1,2 +1,3 @@
 # ignore the virtual environment directory
 /backend/virtualenv
+/backend/pickle_model.pkl
