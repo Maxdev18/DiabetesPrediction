@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IQuestions } from './Interfaces/IQuestions';
 import { questions } from './static/questions';
 import { useNavigate } from 'react-router-dom';
@@ -10,6 +10,7 @@ export const Survey: React.FC = () => {
   const [surveyQuestion, setSurveyQuestion] = useState<Array<IQuestions>>(questions);
   const [index, setIndex] = useState<number>(1);
   const [error, setError] = useState<boolean>(false);
+  const [bar, setBar] = useState<DOMRect>()
   const navigate = useNavigate();
 
   const progressBar = (element: any) => {
@@ -49,10 +50,16 @@ export const Survey: React.FC = () => {
       })
   }
 
+  useEffect(() => {
+    if (document.querySelector(".progress-bar")?.getBoundingClientRect() !== undefined) {
+      setBar(document.querySelector(".progress-bar")?.getBoundingClientRect())
+    }
+  }, [document.querySelector(".progress-bar")])
+
   return (
     <div className='flex flex-col items-center pt-40 w-screen h-screen bg-mainBG relative'>
       <div className='progress-bar h-16 w-1/2 bg-white rounded-full mb-12 overflow-hidden'>
-        {document.querySelector(".progress-bar")?.getBoundingClientRect() !== undefined ? progressBar(document.querySelector(".progress-bar")?.getBoundingClientRect()) : null}
+        {bar ? progressBar(document.querySelector(".progress-bar")?.getBoundingClientRect()) : null}
       </div>
       <div className='flex flex-col justify-center items-center w-full'>
         <div className='flex flex-col items-center w-full'>
