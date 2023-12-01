@@ -38,9 +38,14 @@ export const Survey: React.FC = () => {
   }
 
   async function handleSubmit() {
-    const data = await axios.post("/get-result", {questions: surveyQuestion})
+    await axios.post("/get-result", {questions: surveyQuestion})
       .then(response => {
         console.log(response.data)
+        navigate("/results")
+        localStorage.setItem("result", response.data.prediction)
+      })
+      .catch(error => {
+        console.error(error);
       })
   }
 

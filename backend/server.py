@@ -141,7 +141,6 @@ def getResult():
   #print(prediction)
 
   result = {
-    "accuracy": "98%",
     "prediction": int(prediction[0])
   }
 
