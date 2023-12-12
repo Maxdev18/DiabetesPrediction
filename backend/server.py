@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
-import pandas, sklearn, pickle
+import pandas, pickle
 
 app = Flask(__name__)
 cors = CORS(app, origins=["http://localhost:3000"])
